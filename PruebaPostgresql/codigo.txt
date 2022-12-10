@@ -1,0 +1,52 @@
+  
+            ConexionPostgresql.ejecutaConsulta(consulta);
+           
+      private void MostrarDatos()
+        {
+            dataGridView1.DataSource = ConexionPostgresql.ejecutaConsultaSelect("SELECT *FROM Carta ORDER BY idCarta");
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            string Codigo = textBox1.Text;
+            string idExpansion = textBox4.Text;
+            consulta = "INSERT INTO Carta(Codigo, idExpansion) values('" + Codigo + "','" + idExpansion + "')";
+            ConexionPostgresql.ejecutaConsulta(consulta);
+            MostrarDatos();
+
+
+            textBox1.Clear();
+            textBox4.Clear();
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+
+           string Codigo = textBox1.Text;
+            string idExpansion = textBox4.Text;
+            int idCarta = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
+            consulta = "UPDATE Carta SET Codigo = '" + Codigo + "',idExpansion = '" + idExpansion + "' WHERE idCarta = " + idCarta.ToString();
+            ConexionPostgresql.ejecutaConsulta(consulta);
+            MostrarDatos();
+
+
+            textBox1.Clear();
+            textBox4.Clear();
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            
+           string Codigo = textBox1.Text;
+            string idExpansion = textBox4.Text;
+            int idCarta = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
+            consulta = "UPDATE Carta SET Codigo = '" + Codigo + "',idExpansion = '" + idExpansion + "' WHERE idCarta = " + idCarta.ToString();
+            ConexionPostgresql.ejecutaConsulta(consulta);
+            MostrarDatos();
+
+
+            textBox1.Clear();
+            textBox4.Clear();
+        }
+
+
